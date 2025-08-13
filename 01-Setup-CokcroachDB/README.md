@@ -16,7 +16,7 @@ sudo timedatectl set-timezone Asia/Jakarta
 sudo timedatectl set-ntp true
 ```
 
-Setup /etc/hosts file
+Setup /etc/hosts file on cockroachdb-1
 ```
 $ip_address cockroachdb-1
 $ip_address cockroachdb-2
@@ -43,7 +43,7 @@ Host cockroachdb-2
   User $user
   StrictHostKeyChecking no
 Host cockroachdb-3
-  HostName cockroachdb-4
+  HostName cockroachdb-3
   User $user
   StrictHostKeyChecking no
 ```
@@ -118,12 +118,12 @@ cockroach cert create-node localhost $hostname $ip_address $ip_load_balancer $ho
 > [!NOTE]
 > untuk bagian $ip_load_balancer dan $hostname_load_balancer itu opsional, tergantung apakah architecture kita menggunakan load balancer atau nggk didepannya
 
-Setup non login user for cockroachdb service on all node
+Setup user for cockroachdb service on all node
 ```
-useradd cockroach --shell=/sbin/nologin
+useradd cockroach --home-dir=/opt/cockroachdb
 ```
 
-Change permissions work dir cockroachdb on all node
+Change permissions work dir and extern dir cockroachdb on all node
 ```
 chown -R cockroach:cockroach /opt/cockroachdb
 chown -R cockroach:cockroach /mnt/cockroachdb
