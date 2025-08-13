@@ -139,7 +139,7 @@ Requires=network.target
 [Service]
 Type=notify
 WorkingDirectory=/opt/cockroachdb
-ExecStart=/usr/local/bin/cockroach start --certs-dir=certs --listen-addr=$cockroachdb --advertise-host=$cockroachdb --join='cockroachdb-1:26257 ,cockroachdb-2:26257 ,cockroachdb-3:26257'
+ExecStart=/usr/local/bin/cockroach start --cache=.35 --max-sql-memory=.35 --certs-dir=certs --listen-addr=$cockroachdb --advertise-addr=$cockroachdb --join='cockroachdb-1:26257 ,cockroachdb-2:26257 ,cockroachdb-3:26257'
 TimeoutStopSec=300
 Restart=always
 RestartSec=10
@@ -151,6 +151,12 @@ User=cockroach
 [Install]
 WantedBy=default.target
 ```
+> [!NOTE]
+> parameter cache dan max sql memory merupakan tunning untuk proses caching dan consume memory, by default itu 128MiB dan untuk production bagusnya itu 25%/.25 atau lebih.
+> untuk custom bisa gunakan rumus berikut: (2 * --max-sql-memory) + --cache <= 80% of system RAM, agar terjaga dari OOM events
+> di sarankan juga untuk provisioning RAM 4GB/vCPU dan Storage 320 GiB/vCPU 
+> reference: https://www.cockroachlabs.com/docs/stable/recommended-production-settings#cache-and-sql-memory-size
+
 
 Start systemd and Init Cluster on cockroachdb-1
 ```
@@ -178,3 +184,11 @@ Check status cluster node on cockroachdb-1
 cockroach node status --certs-dir=certs --host=$ip_address
 ```
 
+## cockroach start commands information
+```
+--certs-dir = letak directory yang berisi file crt
+--listen-addr = listen ip address
+--advertise-addr = ip address yang akan di advertise
+--join = ip" node yang join cluster
+--store = untuk custom store data
+```
