@@ -79,9 +79,10 @@ cockroach version
 
 ## Create Cluster CockroachDB
 
-Create work dir cockroachdb on all node
+Create work dir and external connection dir cockroachdb on all node
 ```
 mkdir -p /opt/cockroachdb/certs
+mkdir /mnt/cockroachdb
 ```
 
 Create CA file on cockroachdb-1
@@ -125,6 +126,7 @@ useradd cockroach --shell=/sbin/nologin
 Change permissions work dir cockroachdb on all node
 ```
 chown -R cockroach:cockroach /opt/cockroachdb
+chown -R cockroach:cockroach /mnt/cockroachdb
 chown cockroach /usr/local/bin/cockroach
 ```
 
@@ -139,7 +141,7 @@ Requires=network.target
 [Service]
 Type=notify
 WorkingDirectory=/opt/cockroachdb
-ExecStart=/usr/local/bin/cockroach start --cache=.35 --max-sql-memory=.35 --certs-dir=certs --listen-addr=$cockroachdb --advertise-addr=$cockroachdb --join='cockroachdb-1:26257 ,cockroachdb-2:26257 ,cockroachdb-3:26257'
+ExecStart=/usr/local/bin/cockroach start --cache=.35 --max-sql-memory=.35 --external-io-dir=/mnt/cockroachdb --certs-dir=certs --listen-addr=$cockroachdb --advertise-addr=$cockroachdb --join='cockroachdb-1:26257 ,cockroachdb-2:26257 ,cockroachdb-3:26257'
 TimeoutStopSec=300
 Restart=always
 RestartSec=10
