@@ -152,10 +152,10 @@ User=cockroach
 WantedBy=default.target
 ```
 > [!NOTE]
-> parameter cache dan max sql memory merupakan tunning untuk proses caching dan consume memory, by default itu 128MiB dan untuk production bagusnya itu 25%/.25 atau lebih.
-> untuk custom bisa gunakan rumus berikut: (2 * --max-sql-memory) + --cache <= 80% of system RAM, agar terjaga dari OOM events
-> di sarankan juga untuk provisioning RAM 4GB/vCPU dan Storage 320 GiB/vCPU 
-> reference: https://www.cockroachlabs.com/docs/stable/recommended-production-settings#cache-and-sql-memory-size
+> - parameter cache dan max sql memory merupakan tunning untuk proses caching dan consume memory, by default itu 128MiB dan untuk production bagusnya itu 25%/.25 atau lebih.
+> - untuk custom bisa gunakan rumus berikut: (2 * --max-sql-memory) + --cache <= 80% of system RAM, agar terjaga dari OOM events
+> - di sarankan juga untuk provisioning RAM 4GB/vCPU dan Storage 320 GiB/vCPU 
+> - reference: https://www.cockroachlabs.com/docs/stable/recommended-production-settings#cache-and-sql-memory-size
 
 
 Start systemd and Init Cluster on cockroachdb-1
