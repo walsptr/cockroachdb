@@ -22,3 +22,7 @@ etc
 
 ## Manage user & Grant access
 
+## Licensing
+- Create account on https://www.cockroachlabs.com/
+- Go to organization --> Enterprise License menu
+- Click Create license
