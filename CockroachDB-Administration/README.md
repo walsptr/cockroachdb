@@ -105,9 +105,9 @@ GRANT ALL ON DATABASE testing TO andi;
 lakukan testing seperti select table, create table dll
 
 > [!NOTE]
-> by default user bisa akses semua database dan create table didalamnya, namun tidak bisa melakukan operation pada table yang bukan miliknya
-> by default role tidak bisa login, berbeda dengan user yang defaultnya bisa login
-> reference grant database: https://www.cockroachlabs.com/docs/v24.3/grant#grant-privileges-on-all-tables-in-a-database-or-schema
+> - by default user bisa akses semua database dan create table didalamnya, namun tidak bisa melakukan operation pada table yang bukan miliknya
+> - by default role tidak bisa login, berbeda dengan user yang defaultnya bisa login
+> - reference grant database: https://www.cockroachlabs.com/docs/v24.3/grant#grant-privileges-on-all-tables-in-a-database-or-schema
 
 ## Licensing
 - Create account on https://www.cockroachlabs.com/
