@@ -5,7 +5,7 @@
 - Architecture CockroachDB
 - Licensing CockroachDB
 
-# 2. CockroachDB Administration
+# 2. Setup CockroachDB
 - Requirements for Installations
 - Package Installations
 - Installation and Practice Labs CockroachDB
