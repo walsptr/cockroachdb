@@ -17,6 +17,7 @@
 - Managing Database Cluster
 - Managing Table
 - Manage user & Grant access
+- License
 
 # 4. Backup & Recovery
 - Backup and Restore type
