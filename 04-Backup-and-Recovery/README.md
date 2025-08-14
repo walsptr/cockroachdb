@@ -51,21 +51,9 @@ create new database for testing import from pgdump file
 create database class;
 ```
 
-create new table
-```
-CREATE TABLE student (
-id INT PRIMARY KEY,
-username VARCHAR(50) NOT NULL UNIQUE,
-email VARCHAR(100) NOT NULL UNIQUE,
-password VARCHAR(255) NOT NULL,
-full_name VARCHAR(100),
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
-
 Import the sql file
 ```
-IMPORT TABLE student FROM PGDUMP 'nodelocal://1/peserta.sql' WITH ignore_unsupported_statements;
+IMPORT TABLE peserta FROM PGDUMP 'nodelocal://1/peserta_dump.sql' WITH ignore_unsupported_statements;
 ```
 
 ## Manual Backup
