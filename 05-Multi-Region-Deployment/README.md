@@ -73,6 +73,11 @@ User=cockroach
 WantedBy=default.target
 ```
 
+check regions status
+```
+SHOW REGIONS FROM CLUSTER;
+```
+
 ## Setup Cockroachdb4-6
 lakukan langkah-langkah seperti pada setup cockroachdb di awal untuk cockroachdb4-6
 
